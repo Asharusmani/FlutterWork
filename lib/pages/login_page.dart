@@ -9,7 +9,7 @@ class LoginPage extends StatelessWidget {
       color: Colors.white,
       child:
         Column(
-          children: [
+          children:[
             Image.asset("assets/image/login_image.png",fit: BoxFit.cover,
             ),
             SizedBox(
@@ -53,7 +53,8 @@ class LoginPage extends StatelessWidget {
 
               
               
-          ],),
+          ],
+          ),
         ),
 
           ],
