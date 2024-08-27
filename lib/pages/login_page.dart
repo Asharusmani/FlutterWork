@@ -93,8 +93,6 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(changeButton ? 60: 10),
                   child: InkWell (
                     onTap:() => moveToHome(context),
-
-
                     child: AnimatedContainer(
                       duration: Duration(seconds: 1),
                       width: changeButton ? 40 : 150,
@@ -117,16 +115,11 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-
-
                 // ElevatedButton(onPressed: () {
                 //   Navigator.pushNamed(context, Myroutes.homeRoutes);
                 // }, child: Text("Login"),
                 //   style: TextButton.styleFrom(minimumSize: Size(150, 40)),
                 // ),
-
-
-
               ],
               ),
             ),
