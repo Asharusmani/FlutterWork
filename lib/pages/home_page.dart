@@ -10,17 +10,18 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: Colors.black, // Background color of the Scaffold
+      backgroundColor: Colors.white,//Background color of the Scaffold
       appBar: AppBar(
-        title:  const Center(child: Text("Catalog App")),
-        foregroundColor: Colors.white, // Font color of the AppBar title
-        backgroundColor: Colors.deepPurple, // Background color of the AppBar
+        title: Center(child: const Text("Catalog App",style: TextStyle(color: Colors.black ),)),
+        // foregroundColor: Colors.black, // Font color of the AppBar title
+        // backgroundColor: Colors.white,
+        // iconTheme: IconThemeData(color: Colors.black),// Background color of the AppBar
       ),
       body: Center(
         child: Container(
           child: Text(
             "$days Days Welcome to $name",
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 20,
             ),
