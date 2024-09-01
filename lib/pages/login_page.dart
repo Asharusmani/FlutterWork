@@ -85,9 +85,18 @@ class _LoginPageState extends State<LoginPage> {
                     return null;
                   },
                 ),
-                  SizedBox(
-                    height: 30.0,
-                  ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(onPressed: (){
+                      Navigator.pushNamed(context, Myroutes.signinRoutes);
+                    }, child: Text("Sign Up", style: TextStyle(fontSize: 14,color: Colors.deepPurple),)),
+                  TextButton(onPressed: (){}, child: Text("Forget Password" , style: TextStyle(fontSize: 14,color: Colors.deepPurple),))
+                  ],
+
+                ),
+
                 Material(
                   color: Colors.deepPurple,
                     borderRadius: BorderRadius.circular(changeButton ? 60: 10),
@@ -108,6 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.white,
 
                       ),),
+                         
 
                          // shape: changeButton ? BoxShape.circle
                          //    : BoxShape.rectangle,
@@ -115,6 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
+                
                 // ElevatedButton(onPressed: () {
                 //   Navigator.pushNamed(context, Myroutes.homeRoutes);
                 // }, child: Text("Login"),
