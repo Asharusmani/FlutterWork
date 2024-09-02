@@ -1,7 +1,8 @@
 import 'package:first_app/models/catalog.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:first_app/widgets/drawer.dart';
+
 import 'package:first_app/widgets/item_widget.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
@@ -22,36 +23,44 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     loadData();
   }
-  loadData() async{
-final catalogJson = await rootBundle.loadString("assets/files/catalog.jason");
-final decodedData = jsonDecode(catalogJson);
-final productsData =  decodedData["products"];
-if (kDebugMode) {
-  print(productsData);
-}
 
+  loadData() async {
+
+    final String catalogJson =
+    await rootBundle.loadString('assets/files/catalog.json');
+    final decodedData = jsonDecode(catalogJson);
+    var productsData = decodedData["products"];
+    CatalogModel.items = List.from(productsData)
+        .map<Item>((item) => Item.fromMap(item))
+        .toList();
+    setState(() {
+
+    });
   }
+
 
   @override
   Widget build(BuildContext context) {
-    final dummyList = List.generate(30, (index) => CatalogModel.items[0]);
-    return  Scaffold(
-      backgroundColor: Colors.white,//Background color of the Scaffold
+    return Scaffold(
       appBar: AppBar(
-        title: Center(child: const Text("Catalog App",style: TextStyle(color: Colors.black ),)),
-        // foregroundColor: Colors.black, // Font color of the AppBar title
-        // backgroundColor: Colors.white,
-        // iconTheme: IconThemeData(color: Colors.black),// Background color of the AppBar
+        title: Text("Catalog App"),
       ),
-      body: ListView.builder(itemCount: dummyList.length,
-          itemBuilder: (context,index){
-        return ItemWidget(
-          item: dummyList[index],
-        );
-          },),
-      drawer: const Mydrawer(
-
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+            ? ListView.builder(
+          itemCount: CatalogModel.items.length,
+          itemBuilder: (context, index) {
+            return ItemWidget(
+              item: CatalogModel.items[index],
+            );
+          },
+        )
+            : const Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
+      drawer: const Mydrawer(),
     );
   }
 }

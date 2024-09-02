@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:first_app/models/catalog.dart';
+import 'package:flutter/foundation.dart';
 
 
 class ItemWidget extends StatelessWidget {
@@ -16,7 +17,7 @@ class ItemWidget extends StatelessWidget {
         onTap: (){
           print("${item.name} pressed");
         },
-        leading: Image.asset(item.image),
+        leading: Image.network(item.image),
         title: Text(item.name),
         subtitle: Text(item.desc),
         trailing: Text("\$${item.price}",
